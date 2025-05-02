@@ -4,13 +4,28 @@ export const techStack = [
     link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain.svg',
   },
   {
-    name: 'Express',
-    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg',
+    name: 'Javascript',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
   },
-
+  {
+    name: 'React',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg',
+  },
+  {
+    name: 'Flutter',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg',
+  },
+  {
+    name: 'Dart',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original-wordmark.svg',
+  },
   {
     name: 'NodeJS',
     link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg',
+  },
+  {
+    name: 'Express',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg',
   },
   {
     name: 'Postman',
@@ -30,16 +45,8 @@ export const techStack = [
     link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg',
   },
   {
-    name: 'Javascript',
-    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-  },
-  {
-    name: 'React',
-    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg',
-  },
-  {
-    name: 'React Router',
-    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original-wordmark.svg',
+    name: 'C++',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg',
   },
   {
     name: 'Mongoose',
@@ -65,27 +72,19 @@ export const techStack = [
   },
 
   {
-    name: 'JUnit',
-    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-plain-wordmark.svg',
+    name: 'Firebase',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain-wordmark.svg',
   },
   // { name: "Vim", link: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg" },
-
   {
-    name: 'VS Code',
-    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
-  },
-  {
-    name: 'MySQL',
-    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+    name: 'Swift',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
   },
   {
     name: 'PostgreSQL',
     link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
   },
-  {
-    name: 'Eclipse',
-    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg',
-  },
+
 ];
 
 export const contactLinks = [

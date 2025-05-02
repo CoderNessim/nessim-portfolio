@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Card = ({ imageURL, title, description, demoLink, githubURL }) => {
+const Card = ({ imageURL, title, description, demoLink, githubURL, imageWidth = '100%', imageHeight = 'auto' }) => {
   return (
     <motion.div
       initial={'hidden'}
@@ -16,7 +16,7 @@ const Card = ({ imageURL, title, description, demoLink, githubURL }) => {
           className="rounded-t-lg"
           src={imageURL}
           alt=""
-          style={{ width: '100%', height: 'auto' }} // Adjust the width and height as needed
+          style={{ width: imageWidth, height: imageHeight }} // Adjust the width and height as needed
         />
       </a>
       <div className="p-5">
