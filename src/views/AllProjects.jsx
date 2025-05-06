@@ -6,6 +6,7 @@ import friends360 from '../assets/friends360.png';
 import owdle from '../assets/owdle.png';
 import languageBuddy from '../assets/LanguageBuddy.png';
 import wuct from '../assets/wuct.jpeg';
+import liveLectureCompanion from '../assets/LiveLectureCompanion.jpg'
 
 const AllProjects = () => {
   const theme = useContext(ThemeContext);
@@ -38,9 +39,9 @@ const AllProjects = () => {
           <Card
             title="Live Lecture Companion"
             description="An app that captures real-time audio to be used in a lecture. Sends 10-second segments to a custom LLM for insights. This LLM filters out unimportant information and only displays useful summaries."
-            demoLink="https://apps.apple.com/us/app/wuct/id6739588241" // update if needed
-            githubURL="https://apps.apple.com/us/app/wuct/id6739588241" // update if needed
-            imageURL={wuct}
+            demoLink="https://youtube.com/shorts/PAdXFKgbf8U?si=Md0zYHXKbVTTZsfX" // update if needed
+            githubURL="https://github.com/CoderNessim/Live_Lecture_Companion" // update if needed
+            imageURL={liveLectureCompanion}
             imageWidth="50%"
             imageHeight="500px"
           />

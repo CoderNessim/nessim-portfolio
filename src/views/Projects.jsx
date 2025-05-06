@@ -1,12 +1,11 @@
 import { useContext } from 'react';
 import Card from '../components/Card';
 import { ThemeContext } from '../themeProvider';
-import weatherApp from '../assets/weatherApp.png';
 import friends360 from '../assets/friends360.png';
 import owdle from '../assets/owdle.png';
-import languageBuddy from '../assets/LanguageBuddy.png';
 import wuct from '../assets/wuct.jpeg';
 import { useNavigate } from 'react-router-dom';
+import liveLectureCompanion from '../assets/LiveLectureCompanion.jpg'
 
 const Projects = () => {
   const theme = useContext(ThemeContext);
@@ -37,6 +36,15 @@ const Projects = () => {
             imageHeight="500px"
           />
           <Card
+            title="Live Lecture Companion"
+            description="An app that captures real-time audio to be used in a lecture. Sends 10-second segments to a custom LLM for insights. This LLM filters out unimportant information and only displays useful summaries."
+            demoLink="https://youtube.com/shorts/PAdXFKgbf8U?si=Md0zYHXKbVTTZsfX" // update if needed
+            githubURL="https://github.com/CoderNessim/Live_Lecture_Companion" // update if needed
+            imageURL={liveLectureCompanion}
+            imageWidth="50%"
+            imageHeight="500px"
+          />
+          <Card
             title="Friends 360"
             description="a web platform made for friend group map-tracking, plan making, and messaging. Includes many features that a friend group may need to plan events and keep in touch."
             githubURL="https://github.com/CoderNessim/Friends360"
@@ -49,13 +57,6 @@ const Projects = () => {
             demoLink="https://overwatchdle.netlify.app"
             githubURL="https://github.com/CoderNessim/OWdle"
             imageURL={owdle}
-          />
-          <Card
-            title="Language Buddy"
-            demoLink="https://translator-app-nessim.netlify.app"
-            description="An app designed to help others learn languages, featuring a translator, a sentence/word generator powered by ChatGPT, a similarity score for translation accuracy, and a customizable flashcard maker."
-            imageURL={languageBuddy}
-            githubURL="https://github.com/CoderNessim/LanguageBuddy/tree/main"
           />
         </div>
 
