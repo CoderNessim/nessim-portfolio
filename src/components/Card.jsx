@@ -1,29 +1,21 @@
-import { motion } from 'framer-motion';
-
 const Card = ({ imageURL, title, description, demoLink, githubURL, imageWidth = '100%', imageHeight = 'auto' }) => {
   return (
-    <motion.div
-      initial={'hidden'}
-      whileInView={'visible'}
-      variants={{
-        visible: { opacity: 1 },
-        hidden: { opacity: 0 },
-      }}
-      className="max-w-xl bg-white rounded-lg border border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700 my-8"
+    <div
+      className="w-full h-full flex flex-col bg-white rounded-lg border border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700"
     >
       <a href={demoLink} target="_blank" rel="noreferrer noopener" className="flex justify-center">
         <img
-          className="rounded-t-lg"
+          className="rounded-t-lg object-contain max-w-full"
           src={imageURL}
           alt=""
           style={{ width: imageWidth, height: imageHeight }} // Adjust the width and height as needed
         />
       </a>
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-1 items-start">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {title}
         </h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <p className="mb-3 flex-1 font-normal text-gray-700 dark:text-gray-400">
           {description}
         </p>
         <a
@@ -47,7 +39,7 @@ const Card = ({ imageURL, title, description, demoLink, githubURL, imageWidth = 
           </svg>
         </a>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

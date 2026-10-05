@@ -16,21 +16,21 @@ const Home = () => {
         style={
           darkMode
             ? { backgroundImage: `url('${cloud}')`, backgroundSize: 'cover' }
-            : { backgroundImage: `url('${cloudDark}'`, backgroundSize: 'cover' }
+            : { backgroundImage: `url('${cloudDark}')`, backgroundSize: 'cover' }
         }
       >
         <main
-          className="mx-auto max-w-7xl px-4 sm:px-6 md:mt-0 lg:px-8 flex flex-col md:flex-row items-center justify-center md:justify-between h-screen"
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex flex-col lg:flex-row items-center justify-center lg:justify-between min-h-screen"
           id="/"
         >
-          <div className="sm:text-center lg:text-left">
-            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+          <div className="w-full lg:w-7/12 text-center lg:text-left">
+            <h1 className="text-[min(1.875rem,7vw)] tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
               <motion.span
-                className={darkMode ? 'block text-black' : ' text-white'}
+                className={darkMode ? 'block text-black' : 'block text-white'}
               >
                 Hi, I am Nessim
               </motion.span>
-              <span className="block text-blue-500 z-0 lg:inline">
+              <span className="block text-blue-500 z-0 min-h-[1.25em]">
                 <ReactTyped
                   strings={[
                     'Front End Developer',
@@ -46,14 +46,14 @@ const Home = () => {
             <p
               className={
                 darkMode
-                  ? 'mt-3 text-base text-black sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0'
-                  : 'mt-3 text-base text-white sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0'
+                  ? 'mt-3 text-base text-black sm:mt-5 sm:text-lg max-w-xl mx-auto md:mt-5 md:text-xl lg:mx-0'
+                  : 'mt-3 text-base text-white sm:mt-5 sm:text-lg max-w-xl mx-auto md:mt-5 md:text-xl lg:mx-0'
               }
             >
               I am a Front-End / Full-Stack Developer. I am currently a student
               at Washington University in St. Louis pursuing computer science
             </p>
-            <div className="flex md:justify-start ">
+            <div className="flex justify-center lg:justify-start">
               {contactLinks.map((el, i) => (
                 <a
                   key={i}
@@ -68,10 +68,10 @@ const Home = () => {
               ))}
             </div>
 
-            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-              <div className="mt-3 sm:mt-0 cursor-pointer w-1/2">
+            <div className="mt-5 sm:mt-8 flex justify-center lg:justify-start">
+              <div className="mt-3 sm:mt-0 cursor-pointer w-full sm:w-1/2">
                 <a
-                  href="https://github.com/CoderNessim/resume/blob/main/_Nessim%20Yohros%20Resume%20Final.docx.pdf"
+                  href="/Nessim_Yohros_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-200 md:py-4 md:text-lg md:px-10"
@@ -97,7 +97,7 @@ const Home = () => {
             }}
             src={heroBg}
             alt=""
-            className="md:w-2/6 hidden sm:block"
+            className="hidden sm:block w-1/2 lg:w-2/6 mt-10 lg:mt-0"
           />
         </main>
       </div>
