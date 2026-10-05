@@ -8,6 +8,14 @@ export const techStack = [
     link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
   },
   {
+    name: 'Python',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+  },
+  {
+    name: 'TypeScript',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+  },
+  {
     name: 'React',
     link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
   },
@@ -26,6 +34,10 @@ export const techStack = [
   {
     name: 'Express',
     link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg',
+  },
+  {
+    name: 'Spring Boot',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
   },
   {
     name: 'Postman',
@@ -79,6 +91,10 @@ export const techStack = [
   {
     name: 'Swift',
     link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
+  },
+  {
+    name: 'MySQL',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
   },
   {
     name: 'PostgreSQL',
