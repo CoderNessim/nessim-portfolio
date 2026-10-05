@@ -1,10 +1,12 @@
 import { useContext } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { contactLinks } from '../constants';
 import { ThemeContext } from '../themeProvider';
 
 const Contact = () => {
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
+  const [state, handleSubmit] = useForm('xljgdrbl');
   return (
     <div
       id="contact"
@@ -29,7 +31,13 @@ const Contact = () => {
         </div>
         <div className="flex justify-between items-center md:items-stretch  flex-col md:flex-row pb-24">
           <div className="w-full md:pr-8">
-            <form>
+            {state.succeeded ? (
+              <p className="my-6 text-lg sm:text-xl font-medium text-blue-500">
+                Thanks for reaching out! Your message was sent and I&apos;ll get
+                back to you soon.
+              </p>
+            ) : (
+            <form onSubmit={handleSubmit}>
               <div className="my-6">
                 <label
                   htmlFor="name"
@@ -44,6 +52,7 @@ const Contact = () => {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter your name"
                   required
@@ -63,9 +72,16 @@ const Contact = () => {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter your email"
                   required
+                />
+                <ValidationError
+                  prefix="Email"
+                  field="email"
+                  errors={state.errors}
+                  className="mt-1 text-sm text-red-500"
                 />
               </div>
               <div className="mb-4">
@@ -81,22 +97,47 @@ const Contact = () => {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   className="bg-gray-50 border border-gray-300 text-gray-900 h-28 w-full text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter your message"
                   required
                 />
+                <ValidationError
+                  prefix="Message"
+                  field="message"
+                  errors={state.errors}
+                  className="mt-1 text-sm text-red-500"
+                />
               </div>
+              {/* Hidden from people; bots that fill it in get filtered by Formspree. */}
+              <input
+                type="text"
+                name="_gotcha"
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+              />
+              <ValidationError
+                errors={state.errors}
+                className="mb-4 text-sm text-red-500"
+              />
               <div className="flex justify-between items-center gap-4">
                 <div className="underline">
                   <a href="mailto:n.d.yohros@wustl.edu">
                     Send me email directly
                   </a>
                 </div>
-                <button className="bg-indigo-500 text-white px-4 py-2 w-40 rounded-md hover:bg-indigo-400">
-                  <a href="mailto:n.d.yohros@wustl.edu">Submit</a>
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="bg-indigo-500 text-white px-4 py-2 w-40 rounded-md hover:bg-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {state.submitting ? 'Sending...' : 'Submit'}
                 </button>
               </div>
             </form>
+            )}
           </div>
           <div className="w-full flex flex-col md:items-end  mt-12 md:mt-6">
             {/* <h1 className="text-3xl font-bold">Phone</h1>

@@ -1,5 +1,6 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-scroll';
+import { useContext, useEffect, useState } from 'react';
+import { Link, scroller } from 'react-scroll';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../themeProvider';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hamburger from 'hamburger-react';
@@ -8,6 +9,23 @@ const Navbar = () => {
   const theme = useContext(ThemeContext);
   const [toggle, setToggle] = useState(false);
   const darkMode = theme.state.darkMode;
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onHome = location.pathname === '/';
+
+  // Sections only exist on the home page, so from other pages (e.g.
+  // /all-projects) go home first, then scroll to the requested section.
+  useEffect(() => {
+    const target = location.state?.scrollTo;
+    if (onHome && target) {
+      scroller.scrollTo(target, { smooth: true });
+      navigate('/', { replace: true, state: null });
+    }
+  }, [onHome, location.state, navigate]);
+
+  function goToSection(route) {
+    navigate('/', { state: { scrollTo: route } });
+  }
   const links = [
     {
       name: 'Home',
@@ -72,8 +90,15 @@ const Navbar = () => {
                   <Link
                     to={el.route}
                     activeClass={'text-white bg-blue-500'}
-                    spy={true}
+                    spy={onHome}
                     smooth={true}
+                    href={onHome ? undefined : '/'}
+                    onClick={(e) => {
+                      if (!onHome) {
+                        e.preventDefault();
+                        goToSection(el.route);
+                      }
+                    }}
                     className={
                       darkMode
                         ? 'block py-2 px-3 text-black hover:bg-blue-500 hover:text-white rounded-md'
@@ -154,9 +179,16 @@ const Navbar = () => {
                       ? 'hover:bg-blue-500 text-black block px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white'
                       : 'hover:bg-blue-500 text-white block px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white'
                   }
-                  spy={true}
+                  spy={onHome}
                   smooth={true}
-                  onClick={() => setToggle(false)}
+                  href={onHome ? undefined : '/'}
+                  onClick={(e) => {
+                    setToggle(false);
+                    if (!onHome) {
+                      e.preventDefault();
+                      goToSection(el.route);
+                    }
+                  }}
                 >
                   <li>{el.name}</li>
                 </Link>
