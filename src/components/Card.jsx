@@ -1,14 +1,6 @@
-import { motion } from 'framer-motion';
-
 const Card = ({ imageURL, title, description, demoLink, githubURL, imageWidth = '100%', imageHeight = 'auto' }) => {
   return (
-    <motion.div
-      initial={'hidden'}
-      whileInView={'visible'}
-      variants={{
-        visible: { opacity: 1 },
-        hidden: { opacity: 0 },
-      }}
+    <div
       className="w-full h-full flex flex-col bg-white rounded-lg border border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700"
     >
       <a href={demoLink} target="_blank" rel="noreferrer noopener" className="flex justify-center">
@@ -47,7 +39,7 @@ const Card = ({ imageURL, title, description, demoLink, githubURL, imageWidth = 
           </svg>
         </a>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
