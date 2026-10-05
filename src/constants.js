@@ -9,7 +9,7 @@ export const techStack = [
   },
   {
     name: 'React',
-    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
   },
   {
     name: 'Flutter',
@@ -17,15 +17,15 @@ export const techStack = [
   },
   {
     name: 'Dart',
-    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original-wordmark.svg',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original.svg',
   },
   {
     name: 'NodeJS',
-    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
   },
   {
     name: 'Express',
-    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg',
   },
   {
     name: 'Postman',
@@ -73,7 +73,7 @@ export const techStack = [
 
   {
     name: 'Firebase',
-    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain-wordmark.svg',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg',
   },
   // { name: "Vim", link: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg" },
   {

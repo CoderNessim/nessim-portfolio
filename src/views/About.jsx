@@ -30,54 +30,38 @@ const About = () => {
                   : 'mt-4 text-lg sm:text-xl text-white'
               }
             >
-              I&apos;m a self-taught web developer currently in my second year of
-              university studying computer science. I have a passion for
-              building web applications and websites that are both visually
-              appealing and functional. Because of my background in learning
-              languages, I am always willing to learn new technologies and
-              languages in the evergrowing field of computer science. I am
-              constantly seeking new opportunities to expand my knowledge and
-              advance as a developer.
+              I&apos;m Nessim Yohros, a senior at WashU majoring in Computer
+              Science with a strong passion for web development, software
+              engineering, and teaching. I have experience working in the tech
+              and fintech industry through my time at Mastercard and PayPal.
+              Because of my background in learning languages, I am always
+              willing to learn new technologies and languages in computer
+              science, and I am always open to connecting with others!
             </p>
           </motion.div>
-          <motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView={'visible'}
+            viewport={{ once: true }}
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 20 },
+            }}
+          >
             <h4 className="mt-12 text-2xl sm:text-3xl font-semibold text-blue-500">
               Technologies and Tools
             </h4>
-            <p
-              className={
-                darkMode
-                  ? 'mt-4 text-lg sm:text-xl text-gray-500'
-                  : 'mt-4 text-lg sm:text-xl text-white'
-              }
-            >
-              Using a combination of cutting-edge technologies and reliable
-              open-source software I build user-focused, performant apps and
-              websites built for smartphones, tablets, and desktops.
-            </p>
-          </motion.div>
-          <motion.div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {techStack.map((el, index) => (
-              <motion.div
-                key={index}
-                initial="hidden"
-                whileInView={'visible'}
-                variants={{
-                  visible: {
-                    y: 0,
-                    opacity: 1,
-                    transition: {
-                      type: 'spring',
-                    },
-                  },
-                  hidden: { opacity: 1, y: 80 },
-                }}
-                className="py-2 px-3 sm:px-4 bg-gray-50 rounded-lg flex items-center hover:scale-110 cursor-pointer min-w-0"
-              >
-                <img alt="" src={el.link} className="w-10 sm:w-12 shrink-0" />
-                <h4 className="text-sm lg:text-base ml-3 sm:ml-4 min-w-0">{el.name}</h4>
-              </motion.div>
-            ))}
+            <ul className="mt-6 flex flex-wrap gap-2 sm:gap-3">
+              {techStack.map((el) => (
+                <li
+                  key={el.name}
+                  className="flex items-center gap-2 py-1.5 px-3 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base"
+                >
+                  <img alt="" src={el.link} className="w-5 h-5 object-contain" />
+                  {el.name}
+                </li>
+              ))}
+            </ul>
           </motion.div>
         </div>
       </div>
