@@ -1,88 +1,53 @@
-import { useContext } from 'react';
-import { techStack } from '../constants';
-import { ThemeContext } from '../themeProvider';
-import { motion } from 'framer-motion';
+import Reveal from '../components/Reveal';
+import SectionHeading from '../components/SectionHeading';
 
-const About = () => {
-  const theme = useContext(ThemeContext);
-  const darkMode = theme.state.darkMode;
-  return (
-    <div id="about" className={darkMode === true ? 'bg-white' : 'bg-gray-900'}>
-      <div className="max-w-7xl mx-auto x-4 sm:px-6 lg:px-8 px-4 md:mt-0 pt-24 pb-12">
-        <h2
-          className={
-            darkMode
-              ? 'text-5xl font-bold px-4 md:px-0 text-center'
-              : 'text-5xl font-bold px-4 md:px-0 text-center text-white'
-          }
-        >
-          About Me
-        </h2>
-        <div>
-          <motion.div>
-            <h4 className="mt-12 text-3xl font-semibold text-blue-500">
-              A bit about me
-            </h4>
-            <p
-              className={
-                darkMode
-                  ? 'mt-4 text-xl text-justify text-gray-500'
-                  : 'mt-4 text-xl text-justify text-white'
-              }
-            >
-              I'm a self-taught web developer currently in my second year of
-              university studying computer science. I have a passion for
-              building web applications and websites that are both visually
-              appealing and functional. Because of my background in learning
-              languages, I am always willing to learn new technologies and
-              languages in the evergrowing field of computer science. I am
-              constantly seeking new opportunities to expand my knowledge and
-              advance as a developer.
-            </p>
-          </motion.div>
-          <motion.div>
-            <h4 className="mt-12 text-3xl font-semibold text-blue-500">
-              Technologies and Tools
-            </h4>
-            <p
-              className={
-                darkMode
-                  ? 'mt-4 text-xl text-justify text-gray-500'
-                  : 'mt-4 text-xl text-justify text-white'
-              }
-            >
-              Using a combination of cutting-edge technologies and reliable
-              open-source software I build user-focused, performant apps and
-              websites built for smartphones, tablets, and desktops.
-            </p>
-          </motion.div>
-          <motion.div className="flex flex-wrap mt-8 flex flex-wrap justify-between ">
-            {techStack.map((el, index) => (
-              <motion.div
-                key={index}
-                initial="hidden"
-                whileInView={'visible'}
-                variants={{
-                  visible: {
-                    y: 0,
-                    opacity: 1,
-                    transition: {
-                      type: 'spring',
-                    },
-                  },
-                  hidden: { opacity: 1, y: 80 },
-                }}
-                className="py-2 px-4 bg-gray-50 md:m-4 mx-2 mt-6 rounded-lg flex items-center hover:scale-125 cursor-pointer md:w-48 w-40"
-              >
-                <img alt="" src={el.link} className="w-12" />
-                <h4 className="text-md ml-4">{el.name}</h4>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+const facts = [
+  { label: 'Education', value: 'B.S. Computer Science, WashU McKelvey', sub: 'Graduating Dec 2027' },
+  { label: 'Academics', value: '3.94 GPA', sub: "Dean's List every semester" },
+  { label: 'Focus', value: 'Backend & AI agent tooling', sub: 'plus mobile on the side' },
+  { label: 'Based in', value: 'St. Louis, MO', sub: 'Home in Miami, FL' },
+];
+
+const About = () => (
+  <section id="about" className="section border-t border-stone-200 dark:border-neutral-900">
+    <div className="container-page grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+      <div>
+        <SectionHeading index="01" eyebrow="About" title="From self-taught web apps to enterprise AI infrastructure." />
+        <Reveal className="mt-6 max-w-2xl space-y-5 text-base leading-relaxed text-stone-600 sm:text-lg dark:text-neutral-400">
+          <p>
+            I got into software by teaching myself web development: a weather app, then a Wordle
+            clone for Overwatch fans that grew leaderboards and match history. Since then I&apos;ve
+            moved deeper down the stack into Spring Boot services, database design and, most
+            recently, the plumbing that connects LLMs to real company systems safely.
+          </p>
+          <p>
+            The work I enjoy most is making things reliable and actually used: auth that respects
+            permissions, APIs that agents can reason about, and apps people open every week.
+          </p>
+          <p>
+            Outside of code I love learning languages, spoken ones as much as programming ones,
+            which is how{' '}
+            <a href="#projects" className="font-medium text-stone-900 underline decoration-accent decoration-2 underline-offset-4 dark:text-white">
+              Language Buddy
+            </a>{' '}
+            happened.
+          </p>
+        </Reveal>
       </div>
+
+      <Reveal delay={0.1} as="dl" className="grid content-start gap-px self-start overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 sm:grid-cols-2 lg:grid-cols-1 dark:border-neutral-800 dark:bg-neutral-800">
+        {facts.map((f) => (
+          <div key={f.label} className="bg-stone-50 p-5 dark:bg-neutral-950">
+            <dt className="font-mono text-[11px] uppercase tracking-widest text-stone-500 dark:text-neutral-500">
+              {f.label}
+            </dt>
+            <dd className="mt-1.5 font-semibold text-stone-900 dark:text-white">{f.value}</dd>
+            <dd className="text-sm text-stone-500 dark:text-neutral-400">{f.sub}</dd>
+          </div>
+        ))}
+      </Reveal>
     </div>
-  );
-};
+  </section>
+);
 
 export default About;

@@ -1,27 +1,24 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
-export const ThemeContext = createContext();
-const initialState = { darkMode: true };
+export const ThemeContext = createContext({ dark: true, toggle: () => {} });
 
-const themeReducer = (state, action) => {
-  switch (action.type) {
-    case 'LIGHTMODE':
-      return { darkMode: false };
-    case 'DARKMODE':
-      return { darkMode: true };
-    default:
-      return state;
-  }
-};
+export function ThemeProvider({ children }) {
+  const [dark, setDark] = useState(() =>
+    document.documentElement.classList.contains('dark')
+  );
 
-export function ThemeProvider(props) {
-  const [state, dispatch] = useReducer(themeReducer, initialState);
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', dark);
+    try {
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    } catch {
+      // Storage can be unavailable (private mode); the theme still applies.
+    }
+  }, [dark]);
 
   return (
-    <ThemeContext.Provider
-      value={{ state: false || state, dispatch: dispatch }}
-    >
-      {props.children}
+    <ThemeContext.Provider value={{ dark, toggle: () => setDark((d) => !d) }}>
+      {children}
     </ThemeContext.Provider>
   );
 }

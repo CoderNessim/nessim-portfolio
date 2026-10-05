@@ -1,171 +1,160 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-scroll';
+import { useContext, useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ThemeContext } from '../themeProvider';
-import { motion, AnimatePresence } from 'framer-motion';
-import Hamburger from 'hamburger-react';
+import { navLinks, RESUME_URL } from '../constants';
+import { CloseIcon, MenuIcon, MoonIcon, SunIcon } from './Icons';
+
+const useActiveSection = (ids) => {
+  const [active, setActive] = useState(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [ids]);
+
+  return active;
+};
+
+const sectionIds = navLinks.map((l) => l.id);
 
 const Navbar = () => {
-  const theme = useContext(ThemeContext);
-  const [toggle, setToggle] = useState(false);
-  const darkMode = theme.state.darkMode;
-  const links = [
-    {
-      name: 'Home',
-      route: '/',
-    },
-    {
-      name: 'About',
-      route: 'about',
-    },
-    {
-      name: 'Services',
-      route: 'services',
-    },
-    {
-      name: 'Projects',
-      route: 'projects',
-    },
-    {
-      name: 'Contact',
-      route: 'contact',
-    },
-  ];
+  const { dark, toggle } = useContext(ThemeContext);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const active = useActiveSection(sectionIds);
 
-  function toggleTheme() {
-    if (darkMode === true) {
-      theme.dispatch({ type: 'LIGHTMODE' });
-    } else {
-      theme.dispatch({ type: 'DARKMODE' });
-    }
-  }
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Close the mobile menu if the viewport grows past the breakpoint.
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const onChange = (e) => e.matches && setOpen(false);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  const themeButton = (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+      className="rounded-lg p-2 text-stone-600 transition hover:bg-stone-200 hover:text-stone-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white"
+    >
+      {dark ? <SunIcon /> : <MoonIcon />}
+    </button>
+  );
 
   return (
-    <>
-      <nav
-        className={
-          darkMode
-            ? 'bg-white border-gray-200 z-50 shadow-lg md:px-8 px-1 fixed w-full top-0'
-            : 'bg-gray-700 border-gray-200 z-50 shadow-lg md:px-8 px-1 fixed w-full top-0'
-        }
-      >
-        <div className="flex justify-between items-center py-2 md:py-4 md:px-2 pl-2 mx-auto">
-          <div className="flex items-center cursor-pointer">
-            <a
-              href="/"
-              className={
-                darkMode
-                  ? 'text-xl font-medium text-decoration-none whitespace-nowrap text-black'
-                  : 'text-xl font-medium text-decoration-none whitespace-nowrap text-white'
-              }
-            >
-              Nessim Yohros
-            </a>
-          </div>
-          <div className="hidden justify-between items-center w-full md:flex md:w-auto ">
-            <ul
-              className={
-                'flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium'
-              }
-            >
-              {links.map((el, i) => (
-                <li className="cursor-pointer" key={i}>
-                  <Link
-                    to={el.route}
-                    activeClass={'text-white bg-blue-500'}
-                    spy={true}
-                    smooth={true}
-                    className={
-                      darkMode
-                        ? 'block py-2 px-3 text-black hover:bg-blue-500 hover:text-white rounded-md'
-                        : 'block py-2 px-3 text-white hover:bg-blue-500 hover:text-black rounded-md'
-                    }
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled || open
+          ? 'border-b border-stone-200 bg-stone-50/85 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-950/85'
+          : 'border-b border-transparent'
+      }`}
+    >
+      <nav className="container-page flex h-16 items-center justify-between">
+        <a
+          href="#top"
+          onClick={() => setOpen(false)}
+          className="font-mono text-sm font-medium text-stone-900 dark:text-white"
+        >
+          nessim<span className="text-accent">.</span>yohros
+        </a>
+
+        <div className="hidden items-center gap-1 md:flex">
+          <ul className="flex items-center gap-1">
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={`#${link.id}`}
+                  className={`rounded-lg px-3 py-2 text-sm font-medium transition ${
+                    active === link.id
+                      ? 'text-accent'
+                      : 'text-stone-600 hover:text-stone-900 dark:text-neutral-400 dark:hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 rounded-lg border border-accent px-3 py-1.5 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
+          >
+            Resume
+          </a>
+          <div className="ml-1">{themeButton}</div>
+        </div>
+
+        <div className="flex items-center gap-1 md:hidden">
+          {themeButton}
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            className="rounded-lg p-2 text-stone-700 hover:bg-stone-200 dark:text-neutral-200 dark:hover:bg-neutral-800"
+          >
+            {open ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
+      </nav>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden md:hidden"
+          >
+            <ul className="container-page flex flex-col gap-1 pb-5">
+              {navLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-lg px-3 py-3 text-base font-medium text-stone-700 hover:bg-stone-200 dark:text-neutral-200 dark:hover:bg-neutral-800"
                   >
-                    {el.name}
-                  </Link>
+                    {link.name}
+                  </a>
                 </li>
               ))}
-            </ul>
-            <div onClick={() => toggleTheme()}>
-              {darkMode ? (
-                <img
-                  src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-sun-lighting-flaticons-flat-flat-icons.png"
-                  className="w-6 ml-6 cursor-pointer hover:scale-1.50 block"
-                  alt=""
-                />
-              ) : (
-                <img
-                  src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/49/000000/external-moon-astrology-and-symbology-prettycons-lineal-color-prettycons.png"
-                  className="w-6 ml-6 cursor-pointer hover:scale-1.50 block"
-                  alt=""
-                />
-              )}
-            </div>
-          </div>
-
-          <div className="flex md:hidden items-center">
-            <div onClick={() => toggleTheme()}>
-              {darkMode ? (
-                <img
-                  src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-sun-lighting-flaticons-flat-flat-icons.png"
-                  className="w-6 mr-4 cursor-pointer hover:scale-1.50 block"
-                  alt=""
-                />
-              ) : (
-                <img
-                  src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/49/000000/external-moon-astrology-and-symbology-prettycons-lineal-color-prettycons.png"
-                  alt=""
-                  className="w-6 mr-4 cursor-pointer hover:scale-1.50 block"
-                />
-              )}
-            </div>
-
-            <Hamburger
-              toggled={toggle}
-              size={22}
-              duration={0.8}
-              distance={'lg'}
-              toggle={setToggle}
-              color={darkMode ? '#000000' : '#ffffff'}
-            />
-          </div>
-        </div>
-        {/* Mobile view nav bar */}
-      </nav>
-      <AnimatePresence>
-        {toggle && (
-          <motion.div
-            initial={{ x: 100 }}
-            animate={{ x: 0, transition: { type: 'spring' } }}
-            exit={{ x: 200, transition: { type: 'spring' } }}
-            className={
-              darkMode
-                ? 'bg-white py-2 px-2 md:p-0 z-50 fixed top-16 mt-2 rounded-lg shadow-lg right-2 block w-40'
-                : 'bg-black py-2 px-2 md:p-0 z-50 fixed top-16 mt-2 rounded-lg shadow-lg right-2 block w-40'
-            }
-          >
-            <ul className="md:hidden md:flex-row md:space-y-8 md:mt-0 md:text-md md:font-medium">
-              {links.map((el, i) => (
-                <Link
-                  key={i}
-                  to={el.route}
-                  activeClass={'text-white bg-blue-500'}
-                  className={
-                    darkMode
-                      ? 'hover:bg-blue-500 text-black block px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white'
-                      : 'hover:bg-blue-500 text-white block px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white'
-                  }
-                  spy={true}
-                  smooth={true}
-                  onClick={() => setToggle(false)}
+              <li>
+                <a
+                  href={RESUME_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary mt-2 w-full"
                 >
-                  <li>{el.name}</li>
-                </Link>
-              ))}
+                  Resume
+                </a>
+              </li>
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </header>
   );
 };
 
