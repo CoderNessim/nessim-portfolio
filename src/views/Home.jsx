@@ -23,14 +23,14 @@ const Home = () => {
           className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-12 flex flex-col lg:flex-row items-center justify-center lg:justify-between min-h-screen"
           id="/"
         >
-          <div className="text-center lg:text-left">
-            <h1 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+          <div className="w-full lg:w-7/12 text-center lg:text-left">
+            <h1 className="text-[min(1.875rem,7vw)] tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
               <motion.span
-                className={darkMode ? 'block text-black' : ' text-white'}
+                className={darkMode ? 'block text-black' : 'block text-white'}
               >
                 Hi, I am Nessim
               </motion.span>
-              <span className="block text-blue-500 z-0 lg:inline">
+              <span className="block text-blue-500 z-0 min-h-[1.25em]">
                 <ReactTyped
                   strings={[
                     'Front End Developer',
