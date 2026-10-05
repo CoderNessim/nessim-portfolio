@@ -1,16 +1,16 @@
 import { useContext } from 'react';
 import Card from '../components/Card';
 import { ThemeContext } from '../themeProvider';
+import weatherApp from '../assets/weatherApp.png';
 import friends360 from '../assets/friends360.png';
 import owdle from '../assets/owdle.png';
+import languageBuddy from '../assets/LanguageBuddy.png';
 import wuct from '../assets/wuct.jpeg';
-import { useNavigate } from 'react-router-dom';
 import liveLectureCompanion from '../assets/LiveLectureCompanion.jpg'
 
-const Projects = () => {
+const AllProjects = () => {
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
-  const navigate = useNavigate();
   //const Card = ({ imageURL, title, description, demoLink, githubURL }) => {
 
   return (
@@ -26,7 +26,7 @@ const Projects = () => {
           What I Built
         </h4>
         <div className="mt-8 mb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card
+          <Card
             title="WUCT Mobile App"
             description="Built a Flutter app for the WashU Chemistry Tournament to streamline event coordination and member communication using Firebase Messaging, Firestore, and Riverpod. Maintained app updates for 150+ users."
             demoLink="https://apps.apple.com/us/app/wuct/id6739588241" // update if needed
@@ -35,6 +35,7 @@ const Projects = () => {
             imageWidth="50%"
             imageHeight="500px"
           />
+
           <Card
             title="Live Lecture Companion"
             description="An app that captures real-time audio to be used in a lecture. Sends 10-second segments to a custom LLM for insights. This LLM filters out unimportant information and only displays useful summaries."
@@ -44,6 +45,7 @@ const Projects = () => {
             imageWidth="50%"
             imageHeight="500px"
           />
+
           <Card
             title="Friends 360"
             description="a web platform made for friend group map-tracking, plan making, and messaging. Includes many features that a friend group may need to plan events and keep in touch."
@@ -58,26 +60,24 @@ const Projects = () => {
             githubURL="https://github.com/CoderNessim/OWdle"
             imageURL={owdle}
           />
+          <Card
+            title="Language Buddy"
+            demoLink="https://translator-app-nessim.netlify.app"
+            description="An app designed to help others learn languages, featuring a translator, a sentence/word generator powered by ChatGPT, a similarity score for translation accuracy, and a customizable flashcard maker."
+            imageURL={languageBuddy}
+            githubURL="https://github.com/CoderNessim/LanguageBuddy/tree/main"
+          />
+          <Card
+            title="Simple Weather App"
+            description="My first project which displays data regarding the current weather at a user's current location, can also be used to display weather data for any city in the world."
+            demoLink="https://main--nessim-weather-app.netlify.app/"
+            githubURL="https://github.com/CoderNessim/weatherApp"
+            imageURL={weatherApp}
+          />
         </div>
-
-        <button onClick={() => navigate("/all-projects")} className="w-32 flex items-center py-4 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 active:opacity-80 transition duration-150 ease-in-out mx-auto mt-4">
-        Show More
-          <svg
-            className="ml-2 -mr-1 w-4 h-4"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-        </button>
       </div>
     </div>
   );
 };
 
-export default Projects;
+export default AllProjects;

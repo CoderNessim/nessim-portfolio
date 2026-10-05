@@ -1,64 +1,158 @@
-import { EMAIL, RESUME_URL, socialLinks } from '../constants';
-import { MailIcon, SocialIcon } from '../components/Icons';
-import Reveal from '../components/Reveal';
+import { useContext } from 'react';
+import { contactLinks } from '../constants';
+import { ThemeContext } from '../themeProvider';
 
-const Contact = () => (
-  <section id="contact" className="border-t border-stone-200 dark:border-neutral-900">
-    <div className="container-page section">
-      <Reveal className="relative overflow-hidden rounded-3xl bg-neutral-900 px-6 py-14 text-center sm:px-12 sm:py-20 dark:bg-neutral-900">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[36rem] max-w-full -translate-x-1/2 rounded-full bg-accent/25 blur-3xl"
-        />
-        <p className="eyebrow relative">05 / Contact</p>
-        <h2 className="relative mx-auto mt-3 max-w-2xl text-3xl font-bold tracking-tight text-white [text-wrap:balance] sm:text-5xl">
-          Let&apos;s build something.
+const Contact = () => {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+  return (
+    <div
+      id="contact"
+      className={
+        darkMode
+          ? 'bg-gray-100 pt-24'
+          : 'bg-black pt-24 text-white'
+      }
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl sm:text-5xl font-bold text-center z-0">
+          Contact
         </h2>
-        <p className="relative mx-auto mt-4 max-w-xl text-base leading-relaxed text-neutral-400 sm:text-lg">
-          I&apos;m always happy to talk about internships, new-grad roles, MCP and agent tooling, or a
-          project you&apos;re working on. My inbox is open.
-        </p>
-
-        <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href={`mailto:${EMAIL}`} className="btn-primary w-full sm:w-auto">
-            <MailIcon width={18} height={18} />
-            <span className="break-all">{EMAIL}</span>
-          </a>
-          <a
-            href={RESUME_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn w-full border border-neutral-700 text-white hover:border-neutral-500 sm:w-auto"
-          >
-            View resume
-          </a>
+        <div>
+          <h4 className="mt-12 text-2xl sm:text-3xl font-semibold text-blue-500">
+            Connect with me
+          </h4>
+          <p className="text-gray-500 text-lg sm:text-xl max-w-3xl">
+            If you want to know more about me or my work, or if you would just
+            like to say hello, send me a message. I&apos;d love to hear from you.
+          </p>
         </div>
-
-        <ul className="relative mt-8 flex justify-center gap-2">
-          {socialLinks.map(({ name, link }) => {
-            return (
-              <li key={name}>
+        <div className="flex justify-between items-center md:items-stretch  flex-col md:flex-row pb-24">
+          <div className="w-full md:pr-8">
+            <form>
+              <div className="my-6">
+                <label
+                  htmlFor="name"
+                  className={
+                    darkMode
+                      ? 'block mb-2 text-lg font-medium text-gray-900'
+                      : 'block mb-2 text-lg font-medium text-white'
+                  }
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="email"
+                  className={
+                    darkMode
+                      ? 'block mb-2 text-lg font-medium text-gray-900'
+                      : 'block mb-2 text-lg font-medium text-white'
+                  }
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="message"
+                  className={
+                    darkMode
+                      ? 'block mb-2 text-lg font-medium text-gray-900'
+                      : 'block mb-2 text-lg font-medium text-white'
+                  }
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 h-28 w-full text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter your message"
+                  required
+                />
+              </div>
+              <div className="flex justify-between items-center gap-4">
+                <div className="underline">
+                  <a href="mailto:n.d.yohros@wustl.edu">
+                    Send me email directly
+                  </a>
+                </div>
+                <button className="bg-indigo-500 text-white px-4 py-2 w-40 rounded-md hover:bg-indigo-400">
+                  <a href="mailto:n.d.yohros@wustl.edu">Submit</a>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div className="w-full flex flex-col md:items-end  mt-12 md:mt-6">
+            {/* <h1 className="text-3xl font-bold">Phone</h1>
+            <a
+              href="hello"
+              className="mb-12 mt-4 font-semibold text-blue-700 block uppercase"
+            >
+              +91 8285631499
+            </a> */}
+            <h1 className="text-3xl font-bold">Email</h1>
+            <p
+              href="hello"
+              className="mb-12 mt-4 font-semibold text-blue-700 block uppercase"
+            >
+              n.d.yohros@wustl.edu
+            </p>
+            <h1 className="text-3xl  font-bold">Address</h1>
+            <p
+              href="hello"
+              className="mt-4  mb-12 md:text-right font-semibold text-blue-700 block uppercase"
+            >
+              North Miami Beach, FL
+              <br />
+              United States
+            </p>
+            <h1 className="text-3xl  font-bold">Social</h1>
+            <ul className="flex">
+              {contactLinks.map((el, i) => (
                 <a
-                  href={link}
+                  key={i}
+                  href={el.link}
+                  className="md:ml-6 md:mr-0 mr-6 cursor-pointer mt-4 hover:scale-125 flex flex-col justify-center items-center"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={name}
-                  className="block rounded-lg p-3 text-neutral-400 transition hover:bg-neutral-800 hover:text-white"
                 >
-                  <SocialIcon name={name} />
+                  <img alt="" src={el.url} />
+                  {/* <p className="text-md mt-2 hover:hidden">{el.name}</p> */}
                 </a>
-              </li>
-            );
-          })}
-        </ul>
-      </Reveal>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className={
+          darkMode
+            ? 'w-full bg-white text-black text-lg py-3 flex justify-center items-center'
+            : 'w-full bg-gray-900 text-white text-lg py-3 flex justify-center items-center'
+        }
+      >
+        Made with
+        <div className="text-red-500 px-2 text-2xl">&#10084;</div>
+        by Nessim Yohros
+      </div>
     </div>
-
-    <footer className="container-page flex flex-col items-center justify-between gap-2 border-t border-stone-200 py-8 text-sm text-stone-500 sm:flex-row dark:border-neutral-900 dark:text-neutral-500">
-      <p>© {new Date().getFullYear()} Nessim Yohros</p>
-      <p className="font-mono text-xs">Built with React, Tailwind &amp; Framer Motion</p>
-    </footer>
-  </section>
-);
+  );
+};
 
 export default Contact;

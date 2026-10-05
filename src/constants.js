@@ -1,196 +1,154 @@
-import friends360 from './assets/friends360.png';
-import owdle from './assets/owdle.png';
-import languageBuddy from './assets/LanguageBuddy.png';
-import weatherApp from './assets/weatherApp.png';
-import wuct from './assets/wuct.jpeg';
-import liveLectureCompanion from './assets/LiveLectureCompanion.jpg';
+export const techStack = [
+  {
+    name: 'Java',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain.svg',
+  },
+  {
+    name: 'Javascript',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+  },
+  {
+    name: 'React',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg',
+  },
+  {
+    name: 'Flutter',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg',
+  },
+  {
+    name: 'Dart',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original-wordmark.svg',
+  },
+  {
+    name: 'NodeJS',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg',
+  },
+  {
+    name: 'Express',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg',
+  },
+  {
+    name: 'Postman',
+    link: 'https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg',
+  },
 
-export const EMAIL = 'n.d.yohros@wustl.edu';
-export const RESUME_URL =
-  'https://github.com/CoderNessim/resume/blob/main/_Nessim%20Yohros%20Resume%20Final.docx.pdf';
+  {
+    name: 'HTML',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+  },
+  {
+    name: 'CSS',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg',
+  },
+  {
+    name: 'Redux',
+    link: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg',
+  },
+  {
+    name: 'C++',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg',
+  },
+  {
+    name: 'Mongoose',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongoose/mongoose-original.svg',
+  },
+  {
+    name: 'Mongo DB',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain.svg',
+  },
+  {
+    name: 'Heroku',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-plain.svg',
+  },
+  // { name: "Azure", link: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-plain.svg" },
+  {
+    name: 'Git',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-plain.svg',
+  },
+  // { name: "Docker", link: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg" },
+  {
+    name: 'Supabase',
+    link: 'https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg',
+  },
 
-export const navLinks = [
-  { name: 'About', id: 'about' },
-  { name: 'Experience', id: 'experience' },
-  { name: 'Projects', id: 'projects' },
-  { name: 'Skills', id: 'skills' },
-  { name: 'Contact', id: 'contact' },
+  {
+    name: 'Firebase',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain-wordmark.svg',
+  },
+  // { name: "Vim", link: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg" },
+  {
+    name: 'Swift',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
+  },
+  {
+    name: 'PostgreSQL',
+    link: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+  },
+
 ];
 
-export const socialLinks = [
-  { name: 'GitHub', link: 'https://github.com/CoderNessim' },
-  { name: 'LinkedIn', link: 'https://www.linkedin.com/in/nessim-yohros' },
-  { name: 'Instagram', link: 'https://www.instagram.com/nessimyohros/' },
+export const contactLinks = [
+  {
+    name: 'Instagram',
+    url: 'https://img.icons8.com/doodle/40/000000/instagram-new--v2.png',
+    link: 'https://www.instagram.com/nessimyohros/',
+  },
+  {
+    name: 'Github',
+    url: 'https://img.icons8.com/doodle/40/000000/github--v1.png',
+    link: 'https://www.github.com/CoderNessim',
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://img.icons8.com/doodle/40/000000/linkedin--v2.png',
+    link: 'https://www.linkedin.com/in/nessim-yohros',
+  },
 ];
 
-export const stats = [
-  { value: '25K+', label: 'risk records made agent-searchable at PayPal' },
-  { value: '50K+', label: 'Mastercard employees on Workbench' },
-  { value: '150+', label: 'members on the WUCT app' },
-  { value: '100+', label: 'students mentored as a TA' },
-];
-
-export const experience = [
+export const experienceData = [
   {
     company: 'PayPal',
     role: 'Software Engineering Intern',
-    location: 'San Jose, CA',
-    dates: 'May 2026 – Aug 2026',
-    summary:
-      'Gave AI agents secure, permission-aware access to internal risk review systems.',
+    location: 'San Jose, California',
+    dates: 'May 2026 – August 2026',
     bullets: [
-      'Architected an enterprise MCP server in Python with FastMCP, letting AI agents interact with internal risk review backend services.',
-      'Designed 10+ Java Spring Boot APIs with advanced MySQL/JPA filtering so agents can search and act on 25,000+ risk review records.',
-      'Implemented role-based SSO authentication across 40+ MCP tools, gating sensitive data by user permissions.',
-      'Built AI-powered analysis pipelines that automate review workflows across 10,000+ product change requests.',
+      'Architected and developed an enterprise MCP server using Python and FastMCP, enabling AI agents to access and interact with internal risk review backend services',
+      'Designed and implemented 10+ Java Spring Boot backend APIs with advanced MySQL/JPA filtering to allow AI agents to search, retrieve, and interact with 25,000+ risk review records through authenticated MCP tools',
+      'Implemented role-based SSO authentication for 40+ MCP server tools, restricting access to sensitive risk review data based on user permissions',
+      'Built AI-powered analysis pipelines that automate review workflows across 10,000+ internal product change requests',
     ],
-    tech: ['Python', 'FastMCP', 'Spring Boot', 'MySQL', 'JPA', 'SSO'],
   },
   {
     company: 'Mastercard',
     role: 'Software Engineering Intern',
-    location: "O'Fallon, MO",
-    dates: 'Jun 2025 – Aug 2025',
-    summary:
-      'Helped build Mastercard Workbench, a single dashboard for the tools 50,000+ employees use every day.',
+    location: "O'Fallon, Missouri",
+    dates: 'June 2025 – August 2025',
     bullets: [
-      'Integrated 3+ SaaS APIs (Confluence, ShareFile, Jira) into ServiceNow for centralized access to internal tools.',
-      'Co-developed Mastercard Workbench, aggregating SaaS notifications and tasks for 50,000+ users.',
-      'Built Python scripts and MID server connections to securely link the Mastercard Catalog to ServiceNow.',
-      'Automated Excel dataset ingestion with SQL transform rules, cutting manual processing time by 80%.',
+      "Integrated 3+ SaaS APIs (Confluence, ShareFile, Jira, etc.) into Mastercard's ServiceNow platform, enabling seamless data exchange and centralized access to internal tools",
+      'Co-developed ServiceNow-based Mastercard Workbench, a dashboard that aggregates SaaS notifications and tasks, improving productivity for 50,000+ users',
+      'Built Python scripts and ServiceNow MID server connections to securely connect Mastercard Catalog to ServiceNow',
+      'Automated ingestion of Excel datasets into ServiceNow using SQL transform rules, cutting manual processing time by 80%',
     ],
-    tech: ['ServiceNow', 'Python', 'SQL', 'REST APIs'],
   },
   {
     company: 'WashU STEM Association',
     role: 'Software Engineer',
-    location: 'St. Louis, MO',
-    dates: 'Aug 2024 – Present',
-    summary:
-      'Shipped and maintain the official app for the WashU Chemistry Tournament.',
+    location: 'St. Louis, Missouri',
+    dates: 'August 2024 – Present',
     bullets: [
-      'Launched a cross-platform Flutter app for WUCT with iOS push notifications via Firebase Messaging, serving 150+ members.',
-      'Built personalized scheduling and profiles with Firestore and Riverpod state management.',
-      'Improved registration for 500+ weekly users by reworking the website logistics system in JavaScript.',
+      'Launch cross-platform Flutter app for WashU Chemistry Tournament (WUCT), improving communication for 150+ members using iOS push notifications and Firebase Messaging',
+      'Streamline event management with Firestore and Riverpod state management, enabling personalized scheduling and profiles',
+      'Enhance event registration efficiency for 500+ weekly users by updating website logistics system in JavaScript',
     ],
-    tech: ['Flutter', 'Dart', 'Firebase', 'Riverpod', 'JavaScript'],
   },
   {
     company: 'Washington University in St. Louis',
-    role: 'Teaching Assistant, Intro to Computer Science',
-    location: 'St. Louis, MO',
-    dates: 'Jan 2024 – Jan 2025',
-    summary: 'Taught Java fundamentals and testing to first-year CS students.',
+    role: 'Teaching Assistant - Introduction to Computer Science',
+    location: 'St. Louis, Missouri',
+    dates: 'January 2024 – January 2025',
     bullets: [
-      'Led weekly studio sessions for 100+ students working through Java exercises, helping raise the class average by 10%.',
-      'Coached students on testing and debugging assignments with JUnit.',
-    ],
-    tech: ['Java', 'JUnit'],
-  },
-];
-
-// `fit: 'contain'` is for tall phone screenshots so they aren't cropped.
-export const projects = [
-  {
-    title: 'WUCT Mobile App',
-    tagline: 'Live on the App Store',
-    description:
-      'The official app for the WashU Chemistry Tournament. Push notifications, personalized schedules and profiles for 150+ members, built with Flutter and Firebase.',
-    tech: ['Flutter', 'Firebase', 'Riverpod'],
-    image: wuct,
-    fit: 'contain',
-    links: [{ label: 'App Store', url: 'https://apps.apple.com/us/app/wuct/id6739588241' }],
-    featured: true,
-  },
-  {
-    title: 'Live Lecture Companion',
-    tagline: 'Real-time lecture transcription + summaries',
-    description:
-      'An iOS app that transcribes lectures live and surfaces key insights from an LLM, used by 95+ students. Multithreaded audio capture plus batching cut latency by ~25% over 60-minute sessions.',
-    tech: ['Swift', 'Deepgram', 'Core Data'],
-    image: liveLectureCompanion,
-    fit: 'contain',
-    links: [
-      { label: 'Demo', url: 'https://youtube.com/shorts/PAdXFKgbf8U?si=Md0zYHXKbVTTZsfX' },
-      { label: 'Code', url: 'https://github.com/CoderNessim/Live_Lecture_Companion' },
-    ],
-    featured: true,
-  },
-  {
-    title: 'Friends360',
-    tagline: 'Map-tracking and plans for friend groups',
-    description:
-      'A full-stack platform for live location sharing, making plans and chatting. Streams locations over WebSockets onto Google Maps and recommends nearby plans with the Places API.',
-    tech: ['TypeScript', 'React', 'Node.js', 'MongoDB', 'WebSockets'],
-    image: friends360,
-    links: [{ label: 'Code', url: 'https://github.com/CoderNessim/Friends360' }],
-    featured: true,
-  },
-  {
-    title: 'OWdle',
-    tagline: 'Competitive Overwatch Wordle',
-    description:
-      'Wordle for Overwatch fans, with leaderboards, user profiles and match history to make it competitive.',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    image: owdle,
-    links: [
-      { label: 'Live', url: 'https://overwatchdle.netlify.app' },
-      { label: 'Code', url: 'https://github.com/CoderNessim/OWdle' },
-    ],
-    featured: true,
-  },
-  {
-    title: 'Language Buddy',
-    tagline: 'AI-assisted language practice',
-    description:
-      'A translator, GPT-powered sentence generator, translation similarity scoring and a custom flashcard maker in one app.',
-    tech: ['React', 'OpenAI API'],
-    image: languageBuddy,
-    links: [
-      { label: 'Live', url: 'https://translator-app-nessim.netlify.app' },
-      { label: 'Code', url: 'https://github.com/CoderNessim/LanguageBuddy/tree/main' },
-    ],
-  },
-  {
-    title: 'Weather App',
-    tagline: 'Where it started',
-    description:
-      'My first project: current weather for your location or any city in the world.',
-    tech: ['JavaScript', 'Weather API'],
-    image: weatherApp,
-    links: [
-      { label: 'Live', url: 'https://main--nessim-weather-app.netlify.app/' },
-      { label: 'Code', url: 'https://github.com/CoderNessim/weatherApp' },
-    ],
-  },
-];
-
-export const skills = [
-  {
-    group: 'Languages',
-    items: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'Dart', 'Swift', 'HTML', 'CSS'],
-  },
-  {
-    group: 'Frameworks',
-    items: ['Spring Boot', 'React', 'Flutter', 'Node.js', 'Express.js', 'FastMCP', 'JUnit'],
-  },
-  {
-    group: 'Data & Platforms',
-    items: ['MySQL', 'MongoDB', 'Firebase', 'ServiceNow', 'Heroku'],
-  },
-  {
-    group: 'Tools',
-    items: ['Git', 'Claude Code', 'Postman', 'IntelliJ', 'VS Code'],
-  },
-  {
-    group: 'Concepts',
-    items: [
-      'Model Context Protocol',
-      'AI-Assisted Development',
-      'REST API Design',
-      'Multithreading',
-      'MVC Architecture',
-      'Agile',
+      'Led weekly studio session groups assisting 100+ students with programming exercises in Java, improving class average by 10%',
+      'Guided students in applying software testing principles with JUnit to validate and debug programming assignments',
     ],
   },
 ];

@@ -1,59 +1,53 @@
-import { ArrowUpRightIcon } from './Icons';
+import { motion } from 'framer-motion';
 
-const Card = ({ project }) => {
-  const { title, tagline, description, tech, image, fit, links } = project;
-  const primary = links[0];
-
+const Card = ({ imageURL, title, description, demoLink, githubURL, imageWidth = '100%', imageHeight = 'auto' }) => {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white transition hover:-translate-y-1 hover:border-stone-300 hover:shadow-xl dark:border-neutral-800 dark:bg-neutral-900/40 dark:hover:border-neutral-700">
-      <a
-        href={primary.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        tabIndex={-1}
-        aria-hidden
-        className="block aspect-[16/10] overflow-hidden bg-stone-100 dark:bg-neutral-900"
-      >
+    <motion.div
+      initial={'hidden'}
+      whileInView={'visible'}
+      variants={{
+        visible: { opacity: 1 },
+        hidden: { opacity: 0 },
+      }}
+      className="w-full h-full flex flex-col bg-white rounded-lg border border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700"
+    >
+      <a href={demoLink} target="_blank" rel="noreferrer noopener" className="flex justify-center">
         <img
-          src={image}
+          className="rounded-t-lg object-contain max-w-full"
+          src={imageURL}
           alt=""
-          loading="lazy"
-          className={`h-full w-full transition duration-500 group-hover:scale-[1.03] ${
-            fit === 'contain' ? 'object-contain p-4' : 'object-cover object-top'
-          }`}
+          style={{ width: imageWidth, height: imageHeight }} // Adjust the width and height as needed
         />
       </a>
-
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-accent">{tagline}</p>
-        <h3 className="mt-2 text-xl font-bold text-stone-900 dark:text-white">{title}</h3>
-        <p className="mt-2 flex-1 text-[15px] leading-relaxed text-stone-600 dark:text-neutral-400">
+      <div className="p-5 flex flex-col flex-1 items-start">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {title}
+        </h5>
+        <p className="mb-3 flex-1 font-normal text-gray-700 dark:text-gray-400">
           {description}
         </p>
-        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies">
-          {tech.map((t) => (
-            <li key={t} className="chip">
-              {t}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-5 flex flex-wrap gap-4 border-t border-stone-200 pt-4 dark:border-neutral-800">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-stone-900 transition hover:text-accent dark:text-white"
-            >
-              {link.label}
-              <ArrowUpRightIcon />
-              <span className="sr-only"> for {title}</span>
-            </a>
-          ))}
-        </div>
+        <a
+          href={githubURL}
+          className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Read more
+          <svg
+            className="ml-2 -mr-1 w-4 h-4"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
+        </a>
       </div>
-    </article>
+    </motion.div>
   );
 };
 
